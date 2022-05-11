@@ -18,9 +18,9 @@ RUN if [ -e "$INIT_SCRIPT" ]; then \
         echo "files copied"; \
     fi
 
-RUN chown user "$INIT_SCRIPT"
-RUN chmod 755 "$INIT_SCRIPT"
+RUN sudo chown user "$INIT_SCRIPT"
+RUN sudo chmod 755 "$INIT_SCRIPT"
 
 EXPOSE 80
 
-CMD /home/user/init.sh
+CMD ./home/user/init.sh
