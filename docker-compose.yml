@@ -1,0 +1,76 @@
+version: "3.9"
+services:
+  web-tty:
+    image: wrfly/container-web-tty
+    labels:
+      com.example.description: "web-tty"
+      com.example.label-with-empty-value: ""
+    ports:
+      - "8080:8080"
+      - "8090:8090"
+    environment:
+      - WEB_TTY_GRPC_PORT=8090
+      - WEB_TTY_GRPC_AUTH=96ssW0rd # must match on all hosts
+#       - WEB_TTY_PORT=-1 # 1 : disable the HTTP server, 0 : enable
+    volumes:
+      - "docker-socket"
+        
+secrets:
+  web-tty-gRPC:
+    external: true
+    name: "${WEB_TTY_GRPC_PORT}"
+  web-tty-gRPC-auth:
+    extenal: true
+    name: "${WEB_TTY_GRPC_AUTH=96ssW0rd}"
+    
+volumes:
+  docker-socket:
+    - type: unix
+    - /var/run/docker.sock:/var/run/docker.sock:ro
+
+
+
+## The web-tty service was prepred for remote based on docker run container-web-tty
+## command with flags used for details
+## https://github.com/wrfly/container-web-tty#remote
+
+## Example docker-compose.yml file
+## https://docs.docker.com/compose/compose-file/#illustrative-example 
+
+#   frontend:
+#     image: awesome/webapp
+#     ports:
+#       - "443:8043"
+#     networks:
+#       - front-tier
+#       - back-tier
+#     configs:
+#       - httpd-config
+#     secrets:
+#       - server-certificate
+
+#   backend:
+#     image: awesome/database
+#     volumes:
+#       - db-data:/etc/data
+#     networks:
+#       - back-tier
+
+# volumes:
+#   db-data:
+#     driver: flocker
+#     driver_opts:
+#       size: "10GiB"
+
+# configs:
+#   httpd-config:
+#     external: true
+
+# secrets:
+#   server-certificate:
+#     external: true
+
+# networks:
+#   # The presence of these objects is sufficient to define them
+#   front-tier: {}
+#   back-tier: {}
