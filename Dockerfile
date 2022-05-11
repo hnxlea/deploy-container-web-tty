@@ -9,6 +9,6 @@ COPY init.sh "$INIT_SCRIPT"
 
 EXPOSE 80
 
-RUN chmod +x /init.sh
+RUN chmod +x "$INIT_SCRIPT"
 
 CMD ["bash $INIT_SCRIPT"]
