@@ -18,7 +18,8 @@ RUN if [ -e "$INIT_SCRIPT" ]; then \
         echo "files copied"; \
     fi
 
-RUN chmod +x "$INIT_SCRIPT"
+RUN chown user "$INIT_SCRIPT"
+RUN chmod 755 "$INIT_SCRIPT"
 
 EXPOSE 80
 
