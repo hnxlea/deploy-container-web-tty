@@ -4,11 +4,9 @@ FROM ubuntu
 RUN apt-get update && apt-get upgrade -y
 
 # Copy init.sh script
-#COPY init.sh "$INIT_SCRIPT"
-COPY . /init
+COPY init.sh /
 
-RUN chmod +x /init/init.sh
-
+RUN chmod +x /init.sh
 
 EXPOSE 80
 
