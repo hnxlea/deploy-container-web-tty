@@ -19,4 +19,4 @@ RUN sudo chmod 755 "$INIT_SCRIPT"
 
 EXPOSE 80
 
-CMD ./home/user/init.sh
+CMD "$INIT_SCRIPT"
