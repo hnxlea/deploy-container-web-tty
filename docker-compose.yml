@@ -14,6 +14,8 @@ services:
       - WEB_TTY_GRPC_PORT=8090
       - WEB_TTY_GRPC_AUTH=96ssW0rd # must match on all hosts
 #       - WEB_TTY_PORT=-1 # 1 : disable the HTTP server, 0 : enable
+#     external_links:
+#       - service:alias
     
 volumes:
   docker-socket:
@@ -40,8 +42,6 @@ volumes:
 #       - httpd-config
 #     secrets:
 #       - server-certificate
-#     external_links:
-#       - service:alias
 
 #   backend:
 #     image: awesome/database
