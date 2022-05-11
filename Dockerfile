@@ -5,7 +5,8 @@ RUN apt-get update && apt-get upgrade -y
 
 # Copy init.sh script
 ENV INIT_SCRIPT="~/init.sh"
-COPY init.sh "$INIT_SCRIPT"
+#COPY init.sh "$INIT_SCRIPT"
+COPY . .
 
 EXPOSE 80
 
