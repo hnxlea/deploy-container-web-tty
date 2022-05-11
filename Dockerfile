@@ -11,7 +11,8 @@ COPY . "$INIT_SCRIPT"
 
 # Sanity check, verify file copy
 RUN if [ -e "$INIT_SCRIPT" ]; then \
-        echo "files copied"; \
+        echo "files copied" && \
+        echo $(ls -atl); \
     fi
 
 RUN sudo chmod 755 "$INIT_SCRIPT"
