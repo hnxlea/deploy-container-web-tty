@@ -2,7 +2,7 @@ FROM ubuntu
 
 # Update and upgrade sources and packages
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y dbus-x11 sudo bash net-tools tasksel ssh nano curl
+RUN apt-get install -y sudo bash net-tools ssh vim curl
 
 RUN sudo adduser user --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
 RUN echo "user:Mm0ZM1SP2QOb" | sudo chpasswd
